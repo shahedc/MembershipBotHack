@@ -1,0 +1,212 @@
+{
+    "$id": "1",
+    "Members": {
+        "$id": "2",
+        "$values": [
+            {
+                "$id": "3",
+                "Id": 1,
+                "FirstName": "John",
+                "LastName": "Doe",
+                "TeamRoles": {
+                    "$id": "4",
+                    "$values": [
+                        {
+                            "$id": "5",
+                            "Team": {
+                                "$id": "6",
+                                "Id": 1,
+                                "Name": "Team A",
+                                "Description": "Team A Description",
+                                "MemberRoles": {
+                                    "$id": "7",
+                                    "$values": [
+                                        {
+                                            "$id": "8",
+                                            "Member": {
+                                                "$ref": "3"
+                                            },
+                                            "Role": {
+                                                "$id": "9",
+                                                "Id": 1,
+                                                "Name": "Manager",
+                                                "IsManager": true,
+                                                "TeamMembers": {
+                                                    "$id": "10",
+                                                    "$values": [
+                                                        {
+                                                            "$id": "11",
+                                                            "Team": {
+                                                                "$ref": "6"
+                                                            },
+                                                            "Member": {
+                                                                "$ref": "3"
+                                                            }
+                                                        },
+                                                        {
+                                                            "$id": "12",
+                                                            "Team": {
+                                                                "$id": "13",
+                                                                "Id": 2,
+                                                                "Name": "Team B",
+                                                                "Description": "Team B Description",
+                                                                "MemberRoles": {
+                                                                    "$id": "14",
+                                                                    "$values": [
+                                                                        {
+                                                                            "$id": "15",
+                                                                            "Member": {
+                                                                                "$id": "16",
+                                                                                "Id": 3,
+                                                                                "FirstName": "Jill",
+                                                                                "LastName": "Jones",
+                                                                                "TeamRoles": {
+                                                                                    "$id": "17",
+                                                                                    "$values": [
+                                                                                        {
+                                                                                            "$id": "18",
+                                                                                            "Team": {
+                                                                                                "$ref": "13"
+                                                                                            },
+                                                                                            "Role": {
+                                                                                                "$ref": "9"
+                                                                                            }
+                                                                                        }
+                                                                                    ]
+                                                                                }
+                                                                            },
+                                                                            "Role": {
+                                                                                "$ref": "9"
+                                                                            }
+                                                                        },
+                                                                        {
+                                                                            "$id": "19",
+                                                                            "Member": {
+                                                                                "$ref": "3"
+                                                                            },
+                                                                            "Role": {
+                                                                                "$id": "20",
+                                                                                "Id": 2,
+                                                                                "Name": "Engineer",
+                                                                                "IsManager": false,
+                                                                                "TeamMembers": {
+                                                                                    "$id": "21",
+                                                                                    "$values": [
+                                                                                        {
+                                                                                            "$id": "22",
+                                                                                            "Team": {
+                                                                                                "$ref": "6"
+                                                                                            },
+                                                                                            "Member": {
+                                                                                                "$id": "23",
+                                                                                                "Id": 2,
+                                                                                                "FirstName": "Jane",
+                                                                                                "LastName": "Smith",
+                                                                                                "TeamRoles": {
+                                                                                                    "$id": "24",
+                                                                                                    "$values": [
+                                                                                                        {
+                                                                                                            "$id": "25",
+                                                                                                            "Team": {
+                                                                                                                "$ref": "6"
+                                                                                                            },
+                                                                                                            "Role": {
+                                                                                                                "$ref": "20"
+                                                                                                            }
+                                                                                                        }
+                                                                                                    ]
+                                                                                                }
+                                                                                            }
+                                                                                        },
+                                                                                        {
+                                                                                            "$id": "26",
+                                                                                            "Team": {
+                                                                                                "$ref": "13"
+                                                                                            },
+                                                                                            "Member": {
+                                                                                                "$ref": "3"
+                                                                                            }
+                                                                                        }
+                                                                                    ]
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            },
+                                                            "Member": {
+                                                                "$ref": "16"
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "$id": "27",
+                                            "Member": {
+                                                "$ref": "23"
+                                            },
+                                            "Role": {
+                                                "$ref": "20"
+                                            }
+                                        }
+                                    ]
+                                }
+                            },
+                            "Role": {
+                                "$ref": "9"
+                            }
+                        },
+                        {
+                            "$id": "28",
+                            "Team": {
+                                "$ref": "13"
+                            },
+                            "Role": {
+                                "$ref": "20"
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "$ref": "23"
+            },
+            {
+                "$ref": "16"
+            }
+        ]
+    },
+    "Teams": {
+        "$id": "29",
+        "$values": []
+    },
+    "Roles": {
+        "$id": "30",
+        "$values": [
+            {
+                "$ref": "9"
+            },
+            {
+                "$ref": "20"
+            },
+            {
+                "$id": "31",
+                "Id": 3,
+                "Name": "Analyst",
+                "IsManager": false,
+                "TeamMembers": {
+                    "$id": "32",
+                    "$values": []
+                }
+            },
+            {
+                "$ref": "9"
+            },
+            {
+                "$ref": "20"
+            }
+        ]
+    }
+}

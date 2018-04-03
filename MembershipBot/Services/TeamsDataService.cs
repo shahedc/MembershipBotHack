@@ -1,58 +1,70 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Newtonsoft.Json;
+using System.IO;
 
 namespace MembershipBot.Services
 {
-    public class TeamDataService
+    public static class TeamDataService
     {
-        public string GetMembersByName(string input)
+
+        private static DataStore store;
+
+        static TeamDataService()
+        {
+            if (store is null)
+            {
+                string fileName = "Models\\MembershipData.json";
+                string jsonData = (new StreamReader(fileName)).ReadToEnd();
+
+                store = JsonConvert.DeserializeObject<DataStore>(jsonData);
+            }
+        }
+
+        public static string GetMembersByName(string input)
         {
             return string.Empty;
         }
 
-        public string GetTeamsByName(string input)
+        public static string GetTeamsByName(string input)
         {
             return string.Empty;
         }
 
-        public string GetTeam(int teamID)
+        public static string GetTeam(int teamID)
         {
             return string.Empty;
         }
 
-        public string GetMember(int memberId)
+        public static string GetMember(int memberId)
         {
             return string.Empty;
         }
 
-        public string GetSharedTeams(int memberIda, int memberIdb)
+        public static string GetSharedTeams(int memberIda, int memberIdb)
         {
             return string.Empty;
         }
 
-        public string GetRole(int roleId)
+        public static string GetRole(int roleId)
         {
             return string.Empty;
         }
 
-        public string GetManagers()
+        public static string GetManagers()
         {
             return string.Empty;
         }
 
-        public string GetManagersForTeams()
+        public static string GetManagersForTeams()
         {
             return string.Empty;
         }
 
-        public string GetManagersForMenber(int memberId)
+        public static string GetManagersForMenber(int memberId)
         {
             return string.Empty;
         }
 
-        public string GetTeamsForMenber(int memberId)
+        public static string GetTeamsForMenber(int memberId)
         {
             return string.Empty;
         }

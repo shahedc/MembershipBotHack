@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace MembershipBot.Models
@@ -10,6 +11,6 @@ namespace MembershipBot.Models
         public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public IList<Team> Teams { get; set; }
+        public IList<TeamRole> TeamRoles { get; set; }
     }
 }

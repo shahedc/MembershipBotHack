@@ -5,6 +5,7 @@ using Microsoft.Bot.Builder;
 using Microsoft.Bot.Schema;
 using Microsoft.Bot.Builder.Core.Extensions;
 using Microsoft.Bot.Builder.LUIS;
+using MembershipBot.Services;
 
 namespace MembershipBot
 {
@@ -12,6 +13,7 @@ namespace MembershipBot
     {
         public async Task OnReceiveActivity(ITurnContext context)
         {
+            TeamDataService.GetManagers();
             var luisResult = context.Services.Get<RecognizerResult>(LuisRecognizerMiddleware.LuisRecognizerResultKey);
             ConversationCounter counter = context.GetConversationState<ConversationCounter>();
             if (context.Activity.Type is ActivityTypes.Message)

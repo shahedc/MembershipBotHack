@@ -1,0 +1,16 @@
+﻿[
+  {
+    "teams": [
+      {
+        "id": "1",
+        "name": "Team A",
+        "description": "Team A Description"
+      },
+      {
+        "id": "2",
+        "name": "Team B",
+        "description": "Team B Description"
+      }
+    ]
+  }
+]

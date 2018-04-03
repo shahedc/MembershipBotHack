@@ -24,8 +24,6 @@ namespace MembershipBot
                     message += $" \n \n -Entity: {e.Key} - Value: {e.Value}";
                 }
 
-
-
                 await context.SendActivity(message);
 
             }

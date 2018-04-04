@@ -14,7 +14,7 @@ namespace MembershipBot
     {
         public async Task OnReceiveActivity(ITurnContext context)
         {
-            List<Team> teams = TeamDataService.GetSharedTeams(1, 3) ;
+            List<Team> teams = TeamDataService.GetSharedTeams(7, 3) ;
 
             var luisResult = context.Services.Get<RecognizerResult>(LuisRecognizerMiddleware.LuisRecognizerResultKey);
             ConversationCounter counter = context.GetConversationState<ConversationCounter>();

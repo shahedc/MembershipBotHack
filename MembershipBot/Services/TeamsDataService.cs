@@ -51,16 +51,18 @@ namespace MembershipBot.Services
         {
             Member ma = GetMember(firstMemberId);
             Member mb = GetMember(secondMemberId);
-
-            List<TeamRole> sharedtr = ((List<TeamRole>)ma.TeamRoles).FindAll((tr) => (((List<TeamRole>)mb.TeamRoles).FindAll((trb) => trb.Team == tr.Team)?.Count > 0));
-
             List<Team> sharedTeams = new List<Team>();
 
-            foreach (TeamRole tr in sharedtr)
+            if (!(ma is null) && !(mb is null))
             {
-                if (!sharedTeams.Contains(tr.Team))
+                List<TeamRole> sharedtr = ((List<TeamRole>)ma.TeamRoles).FindAll((tr) => (((List<TeamRole>)mb.TeamRoles).FindAll((trb) => trb.Team == tr.Team)?.Count > 0));
+                
+                foreach (TeamRole tr in sharedtr)
                 {
-                    sharedTeams.Add(tr.Team);
+                    if (!sharedTeams.Contains(tr.Team))
+                    {
+                        sharedTeams.Add(tr.Team);
+                    }
                 }
             }
 

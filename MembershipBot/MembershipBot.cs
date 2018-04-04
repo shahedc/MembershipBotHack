@@ -6,6 +6,7 @@ using Microsoft.Bot.Schema;
 using Microsoft.Bot.Builder.Core.Extensions;
 using Microsoft.Bot.Builder.LUIS;
 using MembershipBot.Services;
+using System.Collections.Generic;
 
 namespace MembershipBot
 {
@@ -13,7 +14,8 @@ namespace MembershipBot
     {
         public async Task OnReceiveActivity(ITurnContext context)
         {
-            TeamDataService.GetManagers();
+            List<Team> teams = TeamDataService.GetSharedTeams(1, 3) ;
+
             var luisResult = context.Services.Get<RecognizerResult>(LuisRecognizerMiddleware.LuisRecognizerResultKey);
             ConversationCounter counter = context.GetConversationState<ConversationCounter>();
             if (context.Activity.Type is ActivityTypes.Message)
@@ -24,6 +26,11 @@ namespace MembershipBot
                 foreach (var e in luisResult.Entities)
                 {
                     message += $" \n \n -Entity: {e.Key} - Value: {e.Value}";
+                }
+
+                foreach (Team team in teams)
+                {
+                    message += $" \n \n Team Found: {team.Description} ({team.Id})";
                 }
 
                 await context.SendActivity(message);

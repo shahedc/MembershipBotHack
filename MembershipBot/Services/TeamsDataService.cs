@@ -14,7 +14,7 @@ namespace MembershipBot.Services
         {
             if (store is null)
             {
-                string fileName = "Models\\MembershipData.json";
+                string fileName = "Services\\MembershipData.json";
                 string jsonData = (new StreamReader(fileName)).ReadToEnd();
 
                 JsonSerializerSettings settings = new JsonSerializerSettings();

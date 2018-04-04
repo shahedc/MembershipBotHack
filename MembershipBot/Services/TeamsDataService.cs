@@ -22,14 +22,14 @@ namespace MembershipBot.Services
                 settings.PreserveReferencesHandling = PreserveReferencesHandling.All;
                 settings.ReferenceLoopHandling = ReferenceLoopHandling.Serialize;
                 settings.ObjectCreationHandling = ObjectCreationHandling.Reuse;
-
+               
                 store = JsonConvert.DeserializeObject<DataStore>(jsonData, settings);
             }
         }
 
         public static List<Member> GetMembersByName(string input)
         {
-            return null;
+            return store.Members.FindAll((m) => string.Format("{0} {1}", m.FirstName, m.LastName).ToLower().Trim().IndexOf(input.ToLower().Trim()) >= 0) ?? new List<Member>(); 
         }
 
         public static List<Team> GetTeamsByName(string input)
@@ -90,13 +90,36 @@ namespace MembershipBot.Services
 
         public static List<TeamMember>  GetManagersForTeams()
         {
-            
-            return store.Roles.FindAll((r) => r.IsManager)?.ForEach((r) => r.TeamMembers.ForEach((tm) => teamManagers.Add(tm))) ?? List<TeamMember>();
+            List<TeamMember> teamManagers = new List<TeamMember>();
+
+            store.Roles.FindAll((r) => r.IsManager)?.ForEach((r) => r.TeamMembers.ForEach((tm) => { teamManagers.Add(tm); }));
+
+            return teamManagers;
         }
 
-        public static string GetManagersForMember(int memberId)
+        public static List<Member> GetManagersForMember(int memberId)
         {
-            return string.Empty;
+            Member m = GetMember(memberId);
+            List<Member> managers = new List<Member>();
+
+            if (!(m is null))
+            {
+                List<Team> teams = new List<Team>();
+
+                ((List<TeamRole>)(m.TeamRoles)).ForEach((tr) => { teams.Add(tr.Team); });
+                
+                foreach (Team t in teams)
+                {
+                    foreach (MemberRole mr in t.MemberRoles)
+                    {
+                        if (mr.Role.IsManager && mr.Member.Id != memberId)
+                        {
+                            managers.Add(mr.Member);
+                        }
+                    }
+                }
+            }
+            return managers;
         }
 
         public static List<Team> GetTeamsForMember(int memberId)

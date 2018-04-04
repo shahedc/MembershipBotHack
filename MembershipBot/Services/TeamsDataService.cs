@@ -13,7 +13,7 @@ namespace MembershipBot.Services
         static TeamDataService()
         {
             if (store is null)
-            {
+            { 
                 string fileName = "Services\\MembershipData.json";
                 string jsonData = (new StreamReader(fileName)).ReadToEnd();
 
@@ -34,7 +34,7 @@ namespace MembershipBot.Services
 
         public static List<Team> GetTeamsByName(string input)
         {
-            return store.Teams.FindAll((t) => t.Name.ToLower() == input.Trim().ToLower()) ?? null;
+            return store.Teams.FindAll((t) => t.Name.IndexOf(input) >= 0) ?? new List<Team>();
         }
 
         public static Team GetTeam(int teamID)
@@ -90,11 +90,8 @@ namespace MembershipBot.Services
 
         public static List<TeamMember>  GetManagersForTeams()
         {
-            List<TeamMember> teamManagers = new List<TeamMember>();
-
-            store.Roles.FindAll((r) => r.IsManager)?.ForEach((r) => r.TeamMembers.ForEach((tm) => teamManagers.Add(tm)));
-
-            return teamManagers;
+            
+            return store.Roles.FindAll((r) => r.IsManager)?.ForEach((r) => r.TeamMembers.ForEach((tm) => teamManagers.Add(tm))) ?? List<TeamMember>();
         }
 
         public static string GetManagersForMember(int memberId)

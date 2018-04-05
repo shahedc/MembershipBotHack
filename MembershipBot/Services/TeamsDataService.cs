@@ -17,12 +17,13 @@ namespace MembershipBot.Services
                 string fileName = "Services\\MembershipData.json";
                 string jsonData = (new StreamReader(fileName)).ReadToEnd();
 
-                JsonSerializerSettings settings = new JsonSerializerSettings();
+                JsonSerializerSettings settings = new JsonSerializerSettings
+                {
+                    PreserveReferencesHandling = PreserveReferencesHandling.All,
+                    ReferenceLoopHandling = ReferenceLoopHandling.Serialize,
+                    ObjectCreationHandling = ObjectCreationHandling.Reuse
+                };
 
-                settings.PreserveReferencesHandling = PreserveReferencesHandling.All;
-                settings.ReferenceLoopHandling = ReferenceLoopHandling.Serialize;
-                settings.ObjectCreationHandling = ObjectCreationHandling.Reuse;
-               
                 store = JsonConvert.DeserializeObject<DataStore>(jsonData, settings);
             }
         }

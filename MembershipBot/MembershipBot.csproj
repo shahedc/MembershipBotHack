@@ -5,15 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="NewFolder\**" />
-    <Content Remove="NewFolder\**" />
-    <EmbeddedResource Remove="NewFolder\**" />
-    <None Remove="NewFolder\**" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.6" />
-    <PackageReference Include="Microsoft.Bot.Builder.Integration.AspNet.Core" Version="4.0.0-alpha2018031301" />
   </ItemGroup>
 
   <ItemGroup>
@@ -28,6 +20,7 @@
     <ProjectReference Include="..\libraries\Microsoft.Bot.Builder\Microsoft.Bot.Builder.csproj" />
     <ProjectReference Include="..\libraries\Microsoft.Bot.Connector\Microsoft.Bot.Connector.csproj" />
     <ProjectReference Include="..\libraries\Microsoft.Bot.Schema\Microsoft.Bot.Schema.csproj" />
+    <ProjectReference Include="..\libraries\PromptlyBot\PromptlyBot.csproj" />
   </ItemGroup>
 
 </Project>

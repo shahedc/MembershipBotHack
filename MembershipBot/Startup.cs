@@ -33,7 +33,8 @@ namespace MembershipBot
             services.AddBot<MembershipBot>(options =>
             {
                 options.CredentialProvider = new ConfigurationCredentialProvider(Configuration);
-                options.Middleware.Add(new ConversationState<ConversationCounter>(new MemoryStorage()));
+                options.Middleware.Add(new ConversationState<MembershipBotConversationState>(new MemoryStorage()));
+                options.Middleware.Add(new UserState<MembershipBotUserState>(new MemoryStorage()));
 
                 string luisModelId = "4413bce6-ed1c-47d4-ae96-a88673e85c22";
                 string luisSubscriptionKey = "d07de23ad12f4d569ee499f3367c37c7";

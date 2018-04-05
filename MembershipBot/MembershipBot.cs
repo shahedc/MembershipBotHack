@@ -1,42 +1,34 @@
 ﻿using System.Threading.Tasks;
 using MembershipBot.Models;
+using MembershipBot.Topics;
 using Microsoft.Bot;
 using Microsoft.Bot.Builder;
-using Microsoft.Bot.Schema;
 using Microsoft.Bot.Builder.Core.Extensions;
-using Microsoft.Bot.Builder.LUIS;
-using MembershipBot.Services;
-using System.Collections.Generic;
+using PromptlyBot;
 
 namespace MembershipBot
 {
+    public class MembershipBotConversationState : PromptlyBotConversationState<RootTopicState>
+    {
+       
+    }
+
+    public class MembershipBotUserState : StoreItem
+    {
+        public GuessGame GuessGame { get; set; }
+
+    }
+
     public class MembershipBot : IBot
     {
-        public async Task OnReceiveActivity(ITurnContext context)
+        public Task OnReceiveActivity(ITurnContext context)
         {
-            List<Team> teams = TeamDataService.GetSharedTeams(7, 3) ;
+            var rootTopic = new Topics.RootTopic(context);
 
-            var luisResult = context.Services.Get<RecognizerResult>(LuisRecognizerMiddleware.LuisRecognizerResultKey);
-            ConversationCounter counter = context.GetConversationState<ConversationCounter>();
-            if (context.Activity.Type is ActivityTypes.Message)
-            {
-                //counter.Counter++;
-                string message = $"({counter.Counter++}) - Intent detected: {luisResult.GetTopScoringIntent().key} ({luisResult.GetTopScoringIntent().score})";
+            rootTopic.OnReceiveActivity(context);
 
-                foreach (var e in luisResult.Entities)
-                {
-                    message += $" \n \n -Entity: {e.Key} - Value: {e.Value}";
-                }
-
-                foreach (Team team in teams)
-                {
-                    message += $" \n \n Team Found: {team.Description} ({team.Id})";
-                }
-
-                await context.SendActivity(message);
-
-            }
-
+            return Task.CompletedTask;
         }
     }
+
 }

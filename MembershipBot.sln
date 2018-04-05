@@ -42,6 +42,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MembershipBot", "Membership
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MembershipDataGenerator", "MembershipDataGenerator\MembershipDataGenerator\MembershipDataGenerator.csproj", "{6261072B-18D2-45FA-926F-08F7C1D36F50}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PromptlyBot", "libraries\PromptlyBot\PromptlyBot.csproj", "{CCFDF1F5-F499-4943-A1DE-5D741BB04AA6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -112,6 +114,10 @@ Global
 		{6261072B-18D2-45FA-926F-08F7C1D36F50}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6261072B-18D2-45FA-926F-08F7C1D36F50}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6261072B-18D2-45FA-926F-08F7C1D36F50}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CCFDF1F5-F499-4943-A1DE-5D741BB04AA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCFDF1F5-F499-4943-A1DE-5D741BB04AA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCFDF1F5-F499-4943-A1DE-5D741BB04AA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCFDF1F5-F499-4943-A1DE-5D741BB04AA6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -135,6 +141,7 @@ Global
 		{CDFEC7D6-847E-4C13-956B-0A960AE3EB60} = {2A46FEEF-4FD9-4DD5-8650-39C36CFDF2BB}
 		{15EF185F-ED1D-4436-8779-B6690E9C9365} = {6B36AD98-851C-4CE6-A64A-06DDC089540E}
 		{6261072B-18D2-45FA-926F-08F7C1D36F50} = {6B36AD98-851C-4CE6-A64A-06DDC089540E}
+		{CCFDF1F5-F499-4943-A1DE-5D741BB04AA6} = {4269F3C3-6B42-419B-B64A-3E6DC0F1574A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7173C9F3-A7F9-496E-9078-9156E35D6E16}

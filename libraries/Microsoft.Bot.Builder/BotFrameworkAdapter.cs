@@ -140,7 +140,7 @@ namespace Microsoft.Bot.Builder.Adapters
         /// <param name="serviceUrl">serviceUrl you want to use</param>
         /// <param name="credentials">credentials</param>
         /// <param name="conversationParameters">arguments for the conversation you want to create</param>
-        /// <param name="callback">callback which will have the context.Request.Conversation.Id in it</param>
+        /// <param name="callback">callback which will have the context.Activity.Conversation.Id in it</param>
         /// <returns></returns>
         public virtual async Task CreateConversation(string channelId, string serviceUrl, MicrosoftAppCredentials credentials, ConversationParameters conversationParameters, Func<ITurnContext, Task> callback)
         {

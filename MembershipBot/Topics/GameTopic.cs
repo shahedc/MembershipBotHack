@@ -15,7 +15,6 @@ namespace MembershipBot.Topics
         public const string TooManyAttempts = "toomanyattempts";
     }
 
-
     public class GuessGameTopicState : ConversationTopicState
     {
         public GuessGame game = new GuessGame();
@@ -87,7 +86,7 @@ namespace MembershipBot.Topics
                         message = "Congrats! You guessed the number!";
                         break;
                     case GameTurnOutcome.Lost:
-                        message = $"Sorry - you suck at this game.\nThe number was {thisGame.NumberToGuess}";
+                        message = $"Sorry... The number was {thisGame.NumberToGuess}.";
                         break;
                     case GameTurnOutcome.InvalidEntry:
                         message = $"That's not a valid number. The number I'm thinking of is between {thisGame.MinGuess} and {thisGame.MaxGuess}. Please try again.";
